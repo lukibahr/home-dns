@@ -1,0 +1,4 @@
+k3s.local.        IN  SOA dns.k3s.local. admin.k3s.local. 2019061316 7200 3600 1209600 3600
+dns.k3s.local.    IN  A   192.168.178.1
+web.k3s.local.    IN  A   192.168.178.150
+webalias.k3s.local. IN  CNAME   web.k3s.local.
