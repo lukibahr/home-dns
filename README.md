@@ -45,6 +45,5 @@ and query the prometheus metrics endpoint `wget -SO- http://localhost:9153/metri
 
 ## Finalize
 
-## Further reading
-- https://avm.de/service/fritzbox/fritzbox-7590/wissensdatenbank/publication/show/165_Andere-DNS-Server-in-FRITZ-Box-einrichten/
-- https://dev.to/robbmanes/running-coredns-as-a-dns-server-in-a-container-1d0
+This home-dns setup is useful for personal needs. If you're working with a local minikube or whatever-"netes" setup and you have enough of changing your etc/hosts file, this home dns setup comes in play. Optionally, you could run it in background and automate the creation of dns entries in your `.db` file.
+
