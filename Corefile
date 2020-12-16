@@ -1,15 +1,39 @@
+
 .:53 {
-    forward . 46.38.225.230 46.38.252.230
+	hosts /path/to/hosts {
+		fallthrough
+	}
+	cache {
+		prefetch 2 30m
+	}
+	forward . 127.0.0.1:5301 127.0.0.1:5302 [::1]:5301 [::1]:5302 127.0.0.1:5303 [::1]:5303 {
+		policy random
+	}
     log
-    errors
-    #proxy . /etc/resolv.conf
+    health
+    prometheus :9153
+}
+.:5301 {
+	forward . tls://8.8.8.8 tls://8.8.4.4 {
+		tls_servername dns.google
+	}
+}
+.:5302 {
+	forward . tls://1.1.1.1 tls://1.0.0.1 {
+		tls_servername cloudflare-dns.com
+	}
+}
+.:5303 {
+	cache
+	forward . tls://9.9.9.9 {
+		tls_servername dns.quad9.net
+	}
 }
 
 k3s.local:53 {
     file /root/local.db
     log
     health
-    prometheus :9153
     errors
     reload 30s
     cache 30

@@ -43,7 +43,14 @@ k3s.local:53 {
 ```
 and query the prometheus metrics endpoint `wget -SO- http://localhost:9153/metrics`. The health endpoint can be activated with the `health` directive and queried with the following HTTP request: `$ wget http://localhost:8080/health`
 
+## Useful plugins
+
+- https://coredns.io/plugins/azure/ to serve Azure DNS zones
+- https://coredns.io/plugins/hosts/ to serve dns records from a `hosts` file
+- https://coredns.io/plugins/loadbalance/ to act as a rr loadbalance
+- https://coredns.io/plugins/reload/ for reloading Corefiles dynamically
+- https://coredns.io/plugins/ready/ for serving readiness probes
+
 ## Finalize
 
 This home-dns setup is useful for personal needs. If you're working with a local minikube or whatever-"netes" setup and you have enough of changing your etc/hosts file, this home dns setup comes in play. Optionally, you could run it in background and automate the creation of dns entries in your `.db` file.
-
